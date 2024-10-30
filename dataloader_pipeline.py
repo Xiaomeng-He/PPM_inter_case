@@ -52,15 +52,15 @@ def create_train_valid_dataloader(csv_path, end_date, max_duration,
     # 1. Tranform csv to dataframe
     df = pd.read_csv(csv_path)
 
-    # 2. Sort dataframe by timestamp -> preprocessing.sort_log
+    # 2. Sort dataframe by timestamp 
     df = sort_log(df,
                   timestamp)
     
-    # 3. Debiasing and cleaning -> preprocessing.debiasing
+    # 3. Debiasing and cleaning 
     df = debiasing(df, end_date, max_duration,
                    case_id, timestamp)
     
-    # 4. Get rid of discard case -> train_test_split.create_table_without_discard_case
+    # 4. Get rid of discard case 
     df_no_discard = create_table_without_discard_case(df, test_ratio, 
                                            case_id, timestamp)
     
@@ -158,11 +158,11 @@ def create_test_dataloader(csv_path, end_date, max_duration,
     # 1. Tranform csv to dataframe
     df = pd.read_csv(csv_path)
 
-    # 2. Sort dataframe by timestamp -> preprocessing.sort_log
+    # 2. Sort dataframe by timestamp 
     df = sort_log(df,
                   timestamp)
     
-    # 3. Debiasing and cleaning -> preprocessing.debiasing
+    # 3. Debiasing and cleaning 
     df = debiasing(df, end_date, max_duration,
                    case_id, timestamp)
 
