@@ -1,6 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-
 
 def sort_log(df, 
              timestamp = 'time:timestamp'):
