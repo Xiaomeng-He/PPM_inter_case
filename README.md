@@ -1,13 +1,26 @@
 # Seq2Seq Model Combining Log Prefix and Trace Prefix for Preditive Process Monitoring
-## File Structure
-`run_experiment_6000cases.ipynb` comprises all steps to run the experiment and displays results based a sample of 6000 cases from BPIC2017. Functions from other `.py` files are used in this main notebook. `BPIC2017_6000cases.csv` is used for this run of experiment.
+## Files Overview
+`run_experiment_6000cases.ipynb`<br />
+This notebook contains the complete workflow for running the experiment, from data preprocessing and model training to evaluation. Functions from other `.py` files are untilized in this notebook.
 
-`preprocessing.py` includes functions used for preprocessing.
+`preprocessing.py` <br />
+Contains functions for preprocessing the event log in a tabular format.
 
-`train_test_split.py` includes functions to get the train / test splitting point and to create tables without discard cases (i.e. cases starting before the splitting point and ending afterwards).
+`create_prefix_suffix.py` <br />
+Contains functions that transform the preprocessed tables into prefix and suffix tensors.
 
-`create_prefix_suffix.py` includes functions that take preprocessed dataframe as input, and output prefix tensors or suffix tensors.
+`train_test_split.py` <br />
+Contains functions to obtain the train/test split point, and create training tables that exclude cases spanning the split (i.e. cases starting before the splitting point and ending afterwards).
 
-`dataloader_pipeline.py` includes two pipelines: one takes csv file as input and outputs train dataloader and validation dataloader; the other takes csv file as input and outputs test dataloader. The steps of these pipelines are mirrored and executed separately in `run_experiment_6000cases.ipynb`.
+`dataloader_pipeline.py` <br />
+Defines the complete pipeline for converting a raw CSV file into prefix and suffix tensors that could be directly fed into the model. By utilizing functions from `preprocessing.py`, `train_test_split.py` and `create_prefix_suffix.py`, two pipelines are built:<br /> 
+1. A pipeline that takes CSV file as input and outputs train dataloader and validation dataloader;
+2. A pipeline that takes CSV file as input and outputs test dataloader. 
 
-`create_model.py` includes classes that define encoder, decoder and seq2seq model, along with a function to calculate normalized Damerau-Levenshtein Distance.
+In the first and second sections of `run_experiment_6000cases.ipynb`, the steps from `dataloader_pipeline.py` are mirrored and executed separately.
+
+`create_model.py` <br />
+Contains classes that define the encoder, decoder and seq2seq model, as well as a function to calculate the normalized Damerau-Levenshtein distance.
+
+`BPIC2017_6000cases.csv`<br />
+A sample of 6000 cases from the BPIC2017 dataset used for this experiment.
