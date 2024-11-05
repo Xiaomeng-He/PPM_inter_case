@@ -1,4 +1,4 @@
-# Seq2Seq Model Combining Log Prefix and Trace Prefix for Preditive Process Monitoring
+# Seq2Seq Model Combining Log Prefix and Trace Prefix for Predictive Process Monitoring
 ## Files Overview
 `run_experiment_6000cases.ipynb`<br />
 This notebook contains the complete workflow for running the experiment, from data preprocessing and model training to evaluation. Functions from other `.py` files are untilized in this notebook.
